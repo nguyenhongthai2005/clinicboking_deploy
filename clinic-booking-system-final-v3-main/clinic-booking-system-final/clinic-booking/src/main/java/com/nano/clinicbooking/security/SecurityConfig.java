@@ -42,7 +42,7 @@ public class SecurityConfig {
                     var c = new CorsConfiguration();
                     c.setAllowedOriginPatterns(List.of(
                             "http://localhost:5173",
-                            "https://clinicboking-deploy-mhtk.vercel.app"   // 👈 thêm dòng này
+                            "https://clinicboking-deploy-*.vercel.app"  // 👈 thêm dòng này
                     ));
                     c.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
                     c.setAllowedHeaders(List.of("*"));
