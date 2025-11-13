@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const base = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1';
+const base = import.meta.env.VITE_API_URL || 'https://clinicboking-deploy.onrender.com';
 
 // Debug: Log base URL để kiểm tra
 console.log('API Base URL:', base);
