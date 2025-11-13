@@ -1,0 +1,43 @@
+.login-page {
+  min-height: fit-content;
+  display:flex; align-items:center; justify-content:center;
+  background: white;
+  padding: 20px;
+}
+.login-card {
+  width: 100%; max-width: 440px;
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.25);
+  padding: 32px;
+}
+.login-title { text-align:center; margin-bottom:16px; color:#ffffff; }
+.login-form { display:flex; flex-direction:column; gap:14px; }
+
+.btn-auth {
+  width:100%; background: var(--brand,#1c7ed6);
+  color:#fff; border:none; padding:10px; border-radius:10px; font-weight:600;
+  transition: all .2s ease;
+}
+.btn-auth:hover { background: var(--brand-600,#1b6fcc); transform: translateY(-1px); }
+
+.login-register { text-align:center; margin: 6px 0 10px; color: var(--muted,#64748b); }
+.login-register a { color: var(--brand,#1c7ed6); text-decoration:none; }
+.login-register a:hover { text-decoration: underline; }
+
+.social-group { display:grid; gap:10px; }
+.btn-social {
+  width:100%; border:none; border-radius:8px; padding:10px 12px; color:#fff;
+  font-weight:600; cursor:pointer; transition: transform .15s ease, filter .15s ease;
+}
+.btn-social:hover { transform: translateY(-1px); filter: brightness(1.05); }
+.btn-google { background:#EA4335; }
+.btn-facebook { background:#1877F2; }
+
+.error-block {
+  background:#fff4f4; border:1px solid #ffcaca;
+  border-radius:10px; padding:8px; text-align:center; color:#b91c1c;
+}
+.btn-forgot { display:inline-block; margin-top:6px; color: var(--brand,#1c7ed6); text-decoration:none; }
+.btn-forgot:hover { text-decoration: underline; }
+
+@media (max-width:520px){ .login-card{ padding:22px; } }

@@ -1,0 +1,34 @@
+.features-section {
+  background: linear-gradient(to bottom, #e3f2fd, #f5f9ff);
+  min-height: 500px;
+}
+
+.features-section .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.features-section .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.features-section .btn-primary {
+  background: linear-gradient(to bottom, #007bff, #0056b3);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.features-section .btn-primary:hover {
+  background: linear-gradient(to bottom, #0056b3, #004085);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.features-section h3 {
+  color: #007bff !important;
+}
+
+.features-section p {
+  color: #6c757d !important;
+}
+

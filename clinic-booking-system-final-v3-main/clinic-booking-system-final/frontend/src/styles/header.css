@@ -1,0 +1,178 @@
+/* ========== HEADER ========== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 120px;
+  background: linear-gradient(
+    90deg,
+    var(--header-grad-from, #0a1020) 0%,
+    var(--header-grad-to, #182246) 100%
+  );
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+/* ========== LAYOUT ========== */
+.header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 24px;
+}
+
+/* ========== LOGO ========== */
+.logo-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.logo-box img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* fixed */
+  background: transparent;
+}
+
+/* ========== NAV ========== */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  position: relative;
+}
+
+/* Link thường (NavLink) */
+.navlink {
+  color: #fff;
+  font-weight: 600;
+  opacity: 0.92;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.navlink:hover,
+.navlink.active {
+  opacity: 1;
+  text-decoration: none;
+}
+
+/* Nút dropdown của react-bootstrap trong nav (đồng bộ như navlink) */
+.nav .dropdown-toggle,
+.nav .dropdown-toggle:hover,
+.nav .dropdown-toggle:focus,
+.nav .dropdown-toggle:active,
+.nav .dropdown-toggle.show {
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  opacity: 0.92;
+  padding: 0;
+}
+.nav .dropdown-toggle:hover,
+.nav .dropdown-toggle.show {
+  opacity: 1;
+}
+
+/* ========== LOGIN CTA ========== */
+.login-wrap {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.btn {
+  text-decoration: none !important;
+}
+.btn.login {
+  background: var(--header-pill, #2f6fff);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn.login:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.btn.login.login--ghost {
+  background: transparent;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+.btn.login.login--ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+/* ========== DROPDOWN (react-bootstrap) ========== */
+.dropdown-menu {
+  min-width: 220px;
+  background: rgba(10, 16, 32, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+.dropdown-menu.show {
+  display: block;
+}
+.dropdown-item {
+  padding: 10px 16px;
+  color: #e2e8f0;
+  font-weight: 500;
+  transition: background 0.2s ease, padding-left 0.2s ease;
+}
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  padding-left: 20px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .nav {
+    gap: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .header-inner {
+    grid-template-columns: 1fr auto;
+    row-gap: 12px;
+  }
+  .nav {
+    grid-column: 1 / -1;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .login-wrap {
+    justify-content: flex-end;
+  }
+  /* Dropdown hiển thị kiểu danh sách phẳng trên mobile */
+  .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    min-width: 100%;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+  }
+  .dropdown-item {
+    padding: 8px 0;
+  }
+}
