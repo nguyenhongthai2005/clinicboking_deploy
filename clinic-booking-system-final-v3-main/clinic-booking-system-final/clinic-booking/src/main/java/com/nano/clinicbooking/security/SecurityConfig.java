@@ -40,7 +40,10 @@ public class SecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(req -> {
                     var c = new CorsConfiguration();
-                    c.setAllowedOriginPatterns(List.of("http://localhost:5173"));
+                    c.setAllowedOriginPatterns(List.of(
+                            "http://localhost:5173",
+                            "https://clinicboking-deploy-mhtk.vercel.app"   // 👈 thêm dòng này
+                    ));
                     c.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
                     c.setAllowedHeaders(List.of("*"));
                     c.setAllowCredentials(true);
@@ -94,9 +97,22 @@ public class SecurityConfig {
 
                                 .successHandler((req, res, auth) -> {
                                     System.out.println(">> OAuth2/OIDC SUCCESS for: " + auth.getName());
-                                    // Redirect về frontend callback page
-                                    res.sendRedirect("http://localhost:5173/oauth2/callback");
+
+                                    String origin = req.getHeader("Origin");
+                                    String redirectBase = "http://localhost:5173"; // mặc định dev
+
+                                    if (origin != null && origin.contains("clinicboking-deploy-mhtk.vercel.app")) {
+                                        redirectBase = "https://clinicboking-deploy-mhtk.vercel.app";
+                                    }
+
+                                    res.sendRedirect(redirectBase + "/oauth2/callback");
                                 })
+
+//                                .successHandler((req, res, auth) -> {
+//                                    System.out.println(">> OAuth2/OIDC SUCCESS for: " + auth.getName());
+//                                    // Redirect về frontend callback page
+//                                    res.sendRedirect("http://localhost:5173/oauth2/callback");
+//                                })
                                 .failureHandler((req, res, ex) -> {
                                     ex.printStackTrace();
                                     System.err.println(">> OAuth2/OIDC FAILURE: " + ex.getMessage());
