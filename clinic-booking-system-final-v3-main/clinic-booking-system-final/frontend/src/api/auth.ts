@@ -1,7 +1,10 @@
-import {http} from './http';
+import { http } from './http';
 
 export type LoginPayload = { email: string; password: string };
-export type LoginResponse = { token: string; user: { id: string; fullName: string; email: string; userType: string } };
+export type LoginResponse = {
+  token: string;
+  user: { id: string; fullName: string; email: string; userType: string };
+};
 
 export type RegistrationInput = {
   fullName: string;
@@ -24,20 +27,21 @@ type BackendLoginResponse = {
   success: boolean;
   id: number;
   fullName: string;
-  role: string; 
+  role: string;
   token: string;
 };
 
-
 export async function loginApi(payload: LoginPayload): Promise<LoginResponse> {
-  const { data } = await http.post<ApiResponse<BackendLoginResponse>>('/auth/login', payload);
-  
+  const { data } = await http.post<ApiResponse<BackendLoginResponse>>(
+    '/api/v1/auth/login',      // ✅ thêm /api/v1
+    payload
+  );
+
   const backend = data.data;
   if (!backend || !backend.token) {
     throw new Error(data?.message || 'Đăng nhập thất bại');
   }
-  
-  // Create frontend-compatible response
+
   return {
     token: backend.token,
     user: {
@@ -49,17 +53,22 @@ export async function loginApi(payload: LoginPayload): Promise<LoginResponse> {
   };
 }
 
-export async function registerApi(payload: RegistrationInput): Promise<RegisterResponse> {
-  const { data } = await http.post<ApiResponse<{ id: number; email: string }>>('/auth/register', payload);
-  
+export async function registerApi(
+  payload: RegistrationInput
+): Promise<RegisterResponse> {
+  const { data } = await http.post<ApiResponse<{ id: number; email: string }>>(
+    '/api/v1/auth/register',   // ✅ thêm /api/v1
+    payload
+  );
+
   const backendResponse = data.data;
-  
+
   return {
     id: backendResponse.id.toString(),
-    email: backendResponse.email
+    email: backendResponse.email,
   };
 }
 
 export function registerAdminApi(payload: RegistrationInput) {
-  return http.post('/admin/register-admin', payload);
+  return http.post('/api/v1/admin/register-admin', payload); // ✅ thêm /api/v1
 }
