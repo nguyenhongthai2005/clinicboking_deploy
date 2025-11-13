@@ -20,7 +20,7 @@ public class Doctor extends User {
 
     private String degree;
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
     private String experience;
     private Boolean isVip = false;

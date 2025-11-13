@@ -29,7 +29,11 @@
 	<properties>
 		<java.version>22</java.version>
 	</properties>
+
+    <packaging>war</packaging>
 	<dependencies>
+
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

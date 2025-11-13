@@ -19,6 +19,6 @@ public class Specialty {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 }
